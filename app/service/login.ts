@@ -1,8 +1,16 @@
 import { Service } from "egg";
 import { ILoginParam } from "cloud";
-import { login_cellphone, user_cloud } from "NeteaseCloudMusicApi";
+import {
+  login_cellphone,
+  user_cloud,
+  login_refresh,
+} from "NeteaseCloudMusicApi";
 
 export default class Login extends Service {
+  /**
+   * 登录接口
+   * @param param
+   */
   public async loginIn(param: ILoginParam) {
     //调用NeteaseCloudMusicApi
     const result = await login_cellphone(param);
@@ -12,12 +20,25 @@ export default class Login extends Service {
       const res = await user_cloud({
         cookie: result.body.cookie,
       });
-      if(res.status !== 200 && res.body.code !== 200){
-          this.ctx.throwBizError(res.body.msg || '认证过期，请重新登录');
+      if (res.status !== 200 && res.body.code !== 200) {
+        this.ctx.throwBizError(res.body.msg || "认证过期，请重新登录");
       }
       return result.body;
     } else {
-       this.ctx.throwBizError(result.body.msg);
+      this.ctx.throwBizError(result.body.msg);
+    }
+  }
+
+  /**
+   * 刷新登录接口
+   */
+  public async refreshStatus() {
+    const result = await login_refresh();
+
+    if (result && result.status === 200) {
+      return result;
+    } else {
+      this.ctx.throwBizError(result.body.msg);
     }
   }
 }

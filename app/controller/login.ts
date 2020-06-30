@@ -14,4 +14,15 @@ export default class LoginController extends Controller {
     this.ctx.response.success(result);
     
   }
+
+  /**
+   * 刷新登录
+   * 调用此接口，可刷新登录状态
+   */
+  public async refreshStatus(){
+    
+    const result = await this.ctx.service.login.refreshStatus();
+
+    this.ctx.response.success(result);
+  }
 }
