@@ -14,7 +14,7 @@ export default (app: Application) => {
   router.post("/login/refresh", controller.login.refreshStatus);
 
   //--------------------------------- 发送验证码 验证码校验 ----------------------------
-  router.post("/", controller.check.sendCode);
+  router.post("/send/code", controller.check.sendCode);
 
 
 };

@@ -41,6 +41,21 @@ export default (appInfo:EggAppInfo) => {
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
   };
 
+  config.onerror = {
+    all(err,ctx) {
+      ctx.body = err;
+      ctx.status = 500;
+    },
+    html(err,ctx) {
+      ctx.body = `<h3>${err}</h3>`;
+      ctx.status = 500;
+    },
+    json(err,ctx){
+      ctx.body = {message:err};
+      ctx.status = 500;
+    },
+  };
+
   return {
     ...config,
     ...userConfig,

@@ -10,6 +10,7 @@
     "NeteaseCloudMusicApi": "^3.33.1",
     "egg": "^2.15.1",
     "egg-alinode": "^2.0.1",
+    "egg-onerror": "^2.1.0",
     "egg-scripts": "^2.11.0",
     "egg-validate": "^2.0.2",
     "is-type-of": "^1.2.1",
@@ -17,7 +18,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.155",
-    "@types/node": "^14.0.13",
+    "@types/node": "^12.12.14",
     "autod": "^3.0.1",
     "autod-egg": "^1.1.0",
     "egg-bin": "^4.11.0",
@@ -31,7 +32,7 @@
     "typescript": "^3.9.5"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=8.9.0"
   },
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-cloud-api",
