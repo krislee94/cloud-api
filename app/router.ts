@@ -16,5 +16,6 @@ export default (app: Application) => {
   //--------------------------------- 发送验证码 验证码校验 ----------------------------
   router.post("/send/code", controller.check.sendCode);
 
-
+  //-------------------------------- 验证验证码 ---------------------------
+  router.post("/check/code", controller.check.checkCode);
 };

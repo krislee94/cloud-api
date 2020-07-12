@@ -1,6 +1,7 @@
-declare module 'cloud' {
-    interface ISendCodeParam {
-        cellphone:string;
-        ctcode?:string;
-    }
+declare module "cloud" {
+  interface ISendCodeParam {
+    cellphone?: string;
+    phone?: string;
+    ctcode?: string;
+  }
 }

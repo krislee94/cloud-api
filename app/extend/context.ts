@@ -19,9 +19,8 @@ export default {
     if (!is.error(err)) {
       return;
     }
-    if (err.isBizError) {
-      this.ctx.response.failure(err.message);
-    }
+    console.log('---- 错误 ------',err)
+    this.ctx.response.failure(err.message);
   },
   setScale(number: number, scale: number, roundingMode: number) {
     const roundNumber = new SimpleMathRound(number);
