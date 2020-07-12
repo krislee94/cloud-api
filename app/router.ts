@@ -24,6 +24,7 @@ export default (app: Application) => {
   //--------------------------------- 用户 ----------------------------
   //用户详情
   router.post("/user/detail", controller.user.queryDetail);
-
+  //获取用户歌单
+  router.post("/user/play/list", controller.user.queryUserPlayList);
 
 };
