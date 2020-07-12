@@ -48,11 +48,13 @@ export default class Login extends Service {
    */
   public async loginStatus() {
     try {
-      const result: any = await login_status();
-      return result.body;
+      // cookie = this.ctx.request.header.cookie
+      const result = await login_status({});
+      return result;
     } catch (error) {
-      let msg = error.body.message;
-      this.ctx.throwBizError(msg);
+      console.log('--------',JSON.stringify(error))
+      let code = error.body.code;
+      this.ctx.throwBizError(code);
     }
   }
 }

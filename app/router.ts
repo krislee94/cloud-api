@@ -10,14 +10,20 @@ export default (app: Application) => {
   //--------------------------------- 登录接口 -------------------------------------
   //登录login的接口
   router.post("/login/user", controller.login.loginIn);
-  //获取登录状态
-  router.post("/login/status", controller.login.loginStatus);
+  //获取登录状态 !!! 这个接口有问题一直返回301 （禁用）
+  router.get("/login/status", controller.login.loginStatus);
   //刷新登录接口
   router.post("/login/refresh", controller.login.refreshStatus);
 
-  //--------------------------------- 发送验证码 验证码校验 ----------------------------
+  //--------------------------------- 验证码 ----------------------------
+  // 发送验证码
   router.post("/send/code", controller.check.sendCode);
-
-  //-------------------------------- 验证验证码 ---------------------------
+  //校验验证码
   router.post("/check/code", controller.check.checkCode);
+
+  //--------------------------------- 用户 ----------------------------
+  //用户详情
+  router.post("/user/detail", controller.user.queryDetail);
+
+
 };
