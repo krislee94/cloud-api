@@ -25,4 +25,16 @@ export default class LoginController extends Controller {
 
     this.ctx.response.success(result);
   }
+
+
+  /**
+   * 调用此接口
+   * 获取当前登录状态 需要header里Cookie带上哟
+   */
+  public async loginStatus(){
+    
+    const result = await this.ctx.service.login.loginStatus();
+
+    this.ctx.response.success(result);
+  }
 }

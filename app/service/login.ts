@@ -4,6 +4,7 @@ import {
   login_cellphone,
   user_cloud,
   login_refresh,
+  login_status,
 } from "NeteaseCloudMusicApi";
 
 export default class Login extends Service {
@@ -39,6 +40,19 @@ export default class Login extends Service {
       return result;
     } else {
       this.ctx.throwBizError(result.body.msg);
+    }
+  }
+
+  /**
+   * 获取登录状态
+   */
+  public async loginStatus() {
+    try {
+      const result: any = await login_status();
+      return result.body;
+    } catch (error) {
+      let msg = error.body.message;
+      this.ctx.throwBizError(msg);
     }
   }
 }

@@ -10,6 +10,8 @@ export default (app: Application) => {
   //--------------------------------- 登录接口 -------------------------------------
   //登录login的接口
   router.post("/login/user", controller.login.loginIn);
+  //获取登录状态
+  router.post("/login/status", controller.login.loginStatus);
   //刷新登录接口
   router.post("/login/refresh", controller.login.refreshStatus);
 
