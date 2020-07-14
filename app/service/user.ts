@@ -41,7 +41,7 @@ export default class User extends Service {
       const result = await user_playlist(param);
       return result.body;
     } catch (error) {
-      let msg = error.body.message || "查询用户信息错误";
+      let msg = error.body.msg || "查询用户信息错误";
       this.ctx.throwBizError(msg);
     }
   }
@@ -57,7 +57,7 @@ export default class User extends Service {
       return result.body;
     } catch (error) {
       console.log(error);
-      let msg = error.body.message || "更新用户列表失败";
+      let msg = error.body.msg || "更新用户列表失败";
       this.ctx.throwBizError(msg);
     }
   }
@@ -88,7 +88,7 @@ export default class User extends Service {
       return result.body;
     } catch (error) {
       this.ctx.logger.info("----查询用户DJ列表错误----", error);
-      let msg = error.body.message || "查询用户DJ列表错误";
+      let msg = error.body.msg || "查询用户DJ列表错误";
       this.ctx.throwBizError(msg);
     }
   }
@@ -106,7 +106,7 @@ export default class User extends Service {
       return result.body;
     } catch (error) {
       this.ctx.logger.info("------查询用户粉丝列表失败------", error);
-      let msg = error.body.message || "查询用户粉丝列表失败";
+      let msg = error.body.msg || "查询用户粉丝列表失败";
       this.ctx.throwBizError(msg);
     }
   }
@@ -124,7 +124,7 @@ export default class User extends Service {
       return result.body;
     } catch (error) {
       this.ctx.logger.info("-----查询用户关注列表-------", error);
-      let msg = error.body.message || "查询用户关注列表失败";
+      let msg = error.body.msg || "查询用户关注列表失败";
       this.ctx.throwBizError(msg);
     }
   }
@@ -151,7 +151,7 @@ export default class User extends Service {
       return result.body;
     } catch (error) {
       this.ctx.logger.info("------查询用户动态失败------", error);
-      let msg = error.body.message || "查询用户动态失败";
+      let msg = error.body.msg || "查询用户动态失败";
       this.ctx.throwBizError(msg);
     }
   }
@@ -170,7 +170,7 @@ export default class User extends Service {
       return result.body;
     } catch (error) {
       this.ctx.logger.info("--------转发用户动态失败-------", error);
-      let msg = error.body.message || "转发用户动态失败";
+      let msg = error.body.msg || "转发用户动态失败";
       this.ctx.throwBizError(msg);
     }
   }
