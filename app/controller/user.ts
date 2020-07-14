@@ -102,4 +102,17 @@ export default class User extends Controller {
     );
     this.ctx.response.success(result);
   }
+
+  /**
+   * 获取用户动态
+   */
+  public async queryUserEvent() {
+    this.ctx.validate({
+      uid: { type: "string", required: true },
+    });
+    const result = await this.ctx.service.user.queryUserEvent(
+      this.ctx.request.body
+    );
+    this.ctx.response.success(result);
+  }
 }

@@ -7,6 +7,7 @@ import {
   user_dj,
   user_followeds,
   user_follows,
+  user_event,
 } from "NeteaseCloudMusicApi";
 import { IUserRequestParam, ILimitPage } from "cloud";
 
@@ -123,6 +124,33 @@ export default class User extends Service {
     } catch (error) {
       this.ctx.logger.info("-----查询用户关注列表-------", error);
       let msg = error.body.message || "查询用户关注列表失败";
+      this.ctx.throwBizError(msg);
+    }
+  }
+
+  /**
+   * 获取用户动态
+   * 返回的参数 --- type参数对应
+   * 18 分享单曲
+   * 19 分享专辑
+   * 17、28 分享电台节目
+   * 22 转发
+   * 39 发布视频
+   * 35、13 分享歌单
+   * 24 分享专栏文章
+   * 41、21 分享视频
+   */
+  public async queryUserEvent(param: IUserRequestParam) {
+    const { uid, limit = 30 } = param;
+    try {
+      const result = await user_event({
+        uid,
+        limit,
+      });
+      return result;
+    } catch (error) {
+      this.ctx.logger.info("------查询用户动态失败------", error);
+      let msg = error.body.message || "查询用户动态失败";
       this.ctx.throwBizError(msg);
     }
   }

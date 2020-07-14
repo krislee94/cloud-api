@@ -36,4 +36,6 @@ export default (app: Application) => {
   router.post("/user/followeds", controller.user.queryUserFolloweds);
   //获取用户关注列表
   router.post("/user/follow", controller.user.queryUserFollower);
+  //获取用户动态
+  router.post("/user/event", controller.user.queryUserEvent);
 };
