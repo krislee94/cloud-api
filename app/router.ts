@@ -27,9 +27,13 @@ export default (app: Application) => {
   //获取用户歌单
   router.post("/user/play/list", controller.user.queryUserPlayList);
   //更新用户订单（用户登录之后更新）
-  router.post("/user/play/list/update",controller.user.userPlayListUpdate);
+  router.post("/user/play/list/update", controller.user.userPlayListUpdate);
   //获取用户信息 , 歌单，收藏，mv, dj 数量(301)
-  router.get("/user/play/subcount",controller.user.getUserInfoAndNumer);
+  router.get("/user/play/subcount", controller.user.getUserInfoAndNumer);
   //获取用户电台
-  router.post("/user/dj",controller.user.queryUserDJ);
+  router.post("/user/dj", controller.user.queryUserDJ);
+  //获取用户粉丝列表
+  router.post("/user/followeds", controller.user.queryUserFolloweds);
+  //获取用户关注列表
+  // router.post("/user/follow",contro)
 };

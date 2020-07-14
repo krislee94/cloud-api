@@ -5,6 +5,7 @@ import {
   playlist_update,
   user_subcount,
   user_dj,
+  user_followeds,
 } from "NeteaseCloudMusicApi";
 import { IUserRequestParam, ILimitPage } from "cloud";
 
@@ -44,7 +45,7 @@ export default class User extends Service {
   /**
    * 更新用户播放列表
    */
-  public async userPlayListUpdate(param) {
+  public async userPlayListUpdate(param: IUserRequestParam) {
     const { uid } = param;
     try {
       const result = await playlist_update({
@@ -85,6 +86,24 @@ export default class User extends Service {
     } catch (error) {
       this.ctx.logger.info("----查询用户DJ列表错误----", error);
       let msg = error.body.message || "查询用户DJ列表错误";
+      this.ctx.throwBizError(msg);
+    }
+  }
+
+  /**
+   * 获取用户粉丝列表
+   */
+  public async queryUserFolloweds(param: IUserRequestParam) {
+    try {
+      const { uid, limit = 30 } = param;
+      const result = await user_followeds({
+        uid,
+        limit,
+      });
+      return result.body;
+    } catch (error) {
+      this.ctx.logger.info("------查询用户粉丝列表失败------", error);
+      let msg = error.body.message || "查询用户粉丝列表失败";
       this.ctx.throwBizError(msg);
     }
   }
