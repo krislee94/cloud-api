@@ -6,6 +6,7 @@ import {
   user_subcount,
   user_dj,
   user_followeds,
+  user_follows,
 } from "NeteaseCloudMusicApi";
 import { IUserRequestParam, ILimitPage } from "cloud";
 
@@ -104,6 +105,24 @@ export default class User extends Service {
     } catch (error) {
       this.ctx.logger.info("------查询用户粉丝列表失败------", error);
       let msg = error.body.message || "查询用户粉丝列表失败";
+      this.ctx.throwBizError(msg);
+    }
+  }
+
+  /**
+   * 获取用户关注列表
+   */
+  public async queryUserFollower(param: IUserRequestParam) {
+    try {
+      const { uid, limit = 30 } = param;
+      const result = await user_follows({
+        uid,
+        limit,
+      });
+      return result;
+    } catch (error) {
+      this.ctx.logger.info("-----查询用户关注列表-------", error);
+      let msg = error.body.message || "查询用户关注列表失败";
       this.ctx.throwBizError(msg);
     }
   }

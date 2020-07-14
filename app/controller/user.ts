@@ -89,4 +89,17 @@ export default class User extends Controller {
 
     this.ctx.response.success(result);
   }
+
+  /**
+   * 获取用户关注列表
+   */
+  public async queryUserFollower() {
+    this.ctx.validate({
+      uid: { type: "string", required: true },
+    });
+    const result = await this.ctx.service.user.queryUserFollower(
+      this.ctx.request.body
+    );
+    this.ctx.response.success(result);
+  }
 }
