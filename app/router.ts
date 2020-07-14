@@ -38,4 +38,6 @@ export default (app: Application) => {
   router.post("/user/follow", controller.user.queryUserFollower);
   //获取用户动态
   router.post("/user/event", controller.user.queryUserEvent);
+  //转发用户动态
+  router.post("/user/forward", controller.user.forwardUserEvent);
 };

@@ -115,4 +115,21 @@ export default class User extends Controller {
     );
     this.ctx.response.success(result);
   }
+
+  /**
+   * 转发用户动态
+   */
+  public async forwardUserEvent() {
+    this.ctx.validate({
+      evId: { type: "string", required: true },
+      uid: { type: "string", required: true }, //转发的用户id
+      forwards: { type: "string", required: false }, //转发者的评论
+    });
+
+    const result = await this.ctx.service.user.forwardUserEvent(
+      this.ctx.request.body
+    );
+
+    this.ctx.response.success(result);
+  }
 }

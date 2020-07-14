@@ -8,6 +8,7 @@ import {
   user_followeds,
   user_follows,
   user_event,
+  event_forward,
 } from "NeteaseCloudMusicApi";
 import { IUserRequestParam, ILimitPage } from "cloud";
 
@@ -120,7 +121,7 @@ export default class User extends Service {
         uid,
         limit,
       });
-      return result;
+      return result.body;
     } catch (error) {
       this.ctx.logger.info("-----查询用户关注列表-------", error);
       let msg = error.body.message || "查询用户关注列表失败";
@@ -147,10 +148,29 @@ export default class User extends Service {
         uid,
         limit,
       });
-      return result;
+      return result.body;
     } catch (error) {
       this.ctx.logger.info("------查询用户动态失败------", error);
       let msg = error.body.message || "查询用户动态失败";
+      this.ctx.throwBizError(msg);
+    }
+  }
+
+  /**
+   * 转发用户动态
+   */
+  public async forwardUserEvent(param) {
+    const { evId, uid, forwards = "" } = param;
+    try {
+      const result = await event_forward({
+        evId,
+        uid,
+        forwards,
+      });
+      return result.body;
+    } catch (error) {
+      this.ctx.logger.info("--------转发用户动态失败-------", error);
+      let msg = error.body.message || "转发用户动态失败";
       this.ctx.throwBizError(msg);
     }
   }
