@@ -40,4 +40,6 @@ export default (app: Application) => {
   router.post("/user/event", controller.user.queryUserEvent);
   //转发用户动态
   router.post("/user/forward", controller.user.forwardUserEvent);
+  //获取用户播放记录
+  router.post("/user/record", controller.user.getUserRecord);
 };

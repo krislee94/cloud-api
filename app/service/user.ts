@@ -9,6 +9,7 @@ import {
   user_follows,
   user_event,
   event_forward,
+  user_record,
 } from "NeteaseCloudMusicApi";
 import { IUserRequestParam, ILimitPage } from "cloud";
 
@@ -171,6 +172,25 @@ export default class User extends Service {
     } catch (error) {
       this.ctx.logger.info("--------转发用户动态失败-------", error);
       let msg = error.body.msg || "转发用户动态失败";
+      this.ctx.throwBizError(msg);
+    }
+  }
+
+  /**
+   * 获取用户播放记录
+   */
+  public async getUserRecord(param) {
+    const { uid, type = 1 } = param;
+
+    try {
+      const result = await user_record({
+        uid,
+        type,
+      });
+      return result;
+    } catch (error) {
+      this.ctx.logger.info(`查询失败${error}`);
+      let msg = error.body.msg || "查询用户播放记录失败";
       this.ctx.throwBizError(msg);
     }
   }

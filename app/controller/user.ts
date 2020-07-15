@@ -132,4 +132,22 @@ export default class User extends Controller {
 
     this.ctx.response.success(result);
   }
+
+  /**
+   * 获取用户播放记录
+   * type = 1，只返回一周的
+   * type = 0 返回所有数据 默认1
+   */
+  public async getUserRecord() {
+    this.ctx.validate({
+      uid: { type: "string", required: true },
+      type: { type: "number", required: false },
+    });
+
+    const result = await this.ctx.service.user.getUserRecord(
+      this.ctx.request.body
+    );
+
+    this.ctx.response.success(result);
+  }
 }

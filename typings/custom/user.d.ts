@@ -9,4 +9,9 @@ declare module "cloud" {
     limit?: number;
     offset?: number;
   }
+
+  interface IUserRecordParam {
+    uid: string;
+    type?: number;
+  }
 }
