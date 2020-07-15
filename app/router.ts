@@ -21,7 +21,7 @@ export default (app: Application) => {
   //校验验证码
   router.post("/check/code", controller.check.checkCode);
 
-  //--------------------------------- 用户 ----------------------------
+  //--------------------------  用户 ----------------------------
   //用户详情
   router.post("/user/detail", controller.user.queryDetail);
   //获取用户歌单
@@ -42,4 +42,9 @@ export default (app: Application) => {
   router.post("/user/forward", controller.user.forwardUserEvent);
   //获取用户播放记录
   router.post("/user/record", controller.user.getUserRecord);
+
+  // ------------------------ 热门话题，热评等 ----------------------------
+
+  //查询热门话题 （301）
+  router.post("/hot/topic", controller.hot.HotTopic);
 };
