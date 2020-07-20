@@ -47,4 +47,6 @@ export default (app: Application) => {
 
   //查询热门话题 （301）
   router.post("/hot/topic", controller.hot.HotTopic);
+  //获取云村热评
+  router.get("/hotwall/list", controller.hot.hotWallList);
 };
