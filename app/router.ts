@@ -49,4 +49,8 @@ export default (app: Application) => {
   router.post("/hot/topic", controller.hot.HotTopic);
   //获取云村热评
   router.get("/hotwall/list", controller.hot.hotWallList);
+
+  //------------------------- 心动模式 --------------------------------
+  //心动模式&智能播放(500)
+  router.post("/playmode/intelligence/list", controller.song.getAISong);
 };
