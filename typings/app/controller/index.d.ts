@@ -6,6 +6,7 @@ import ExportCheck from '../../../app/controller/check';
 import ExportHome from '../../../app/controller/home';
 import ExportHot from '../../../app/controller/hot';
 import ExportLogin from '../../../app/controller/login';
+import ExportPlayer from '../../../app/controller/player';
 import ExportSong from '../../../app/controller/song';
 import ExportUser from '../../../app/controller/user';
 
@@ -15,6 +16,7 @@ declare module 'egg' {
     home: ExportHome;
     hot: ExportHot;
     login: ExportLogin;
+    player: ExportPlayer;
     song: ExportSong;
     user: ExportUser;
   }

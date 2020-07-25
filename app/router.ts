@@ -53,4 +53,7 @@ export default (app: Application) => {
   //------------------------- 心动模式 --------------------------------
   //心动模式&智能播放(500)
   router.post("/playmode/intelligence/list", controller.song.getAISong);
+
+  //--------------------------- 歌手 ------------------------------------
+  router.post("/player/artist/list", controller.player.getArtistList);
 };
