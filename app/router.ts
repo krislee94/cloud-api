@@ -55,5 +55,8 @@ export default (app: Application) => {
   router.post("/playmode/intelligence/list", controller.song.getAISong);
 
   //--------------------------- 歌手 ------------------------------------
+  //歌手分类列表
   router.post("/player/artist/list", controller.player.getArtistList);
+  //收藏取消 收藏歌手
+  router.post("/artist/sub", controller.player.artistSub);
 };

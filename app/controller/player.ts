@@ -36,4 +36,17 @@ export default class Player extends Controller {
 
     this.ctx.response.success(result);
   }
+
+  //收藏与取消收藏歌手
+  public async artistSub() {
+    this.ctx.validate({
+      artistId: { type: "string", required: true },
+      //   artistIds:{type:'string'}
+    });
+    const result = this.ctx.service.player.artistSub({
+      ...this.ctx.request.body,
+    });
+
+    this.ctx.response.success(result);
+  }
 }
