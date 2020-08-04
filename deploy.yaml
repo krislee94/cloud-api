@@ -15,7 +15,7 @@ deploy: # 部署脚本
     ref: origin/master # 要拉取的git分支
     ssh_options: StrictHostKeyChecking=no # SSH 公钥检查
     repo: git@github.com:krislee94/cloud-api.git # 远程仓库地址
-    path: /usr/cloud-api/cloud-api # 拉取到服务器某个目录下
+    path: /usr/cloud-api # 拉取到服务器某个目录下
     pre-deploy: git fetch --all # 部署前执行
     post-deploy: npm install &&  pm2 reload deploy.yaml --env production # 部署后执行
     env:
