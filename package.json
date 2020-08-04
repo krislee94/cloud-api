@@ -2,7 +2,6 @@
   "name": "cloud-api",
   "version": "1.0.0",
   "description": "网易云音乐api",
-  "private": true,
   "egg": {
     "typescript": true
   },
@@ -11,7 +10,7 @@
     "egg": "^2.15.1",
     "egg-alinode": "^2.0.1",
     "egg-onerror": "^2.1.0",
-    "egg-scripts": "^2.11.0",
+    "egg-scripts": "^2.13.0",
     "egg-validate": "^2.0.2",
     "is-type-of": "^1.2.1",
     "number-precision": "^1.5.0"
