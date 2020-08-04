@@ -17,6 +17,6 @@ deploy: # 部署脚本
     repo: git@github.com:krislee94/cloud-api.git # 远程仓库地址
     path: /usr/cloud-api # 拉取到服务器某个目录下
     pre-deploy: git fetch --all # 部署前执行
-    post-deploy: npm install && npm run dev &&  pm2 reload deploy.yaml # 部署后执行
+    post-deploy: npm install && npm run dev &&  pm2 reload deploy.yaml --env production # 部署后执行
     env:
       NODE_ENV: production
