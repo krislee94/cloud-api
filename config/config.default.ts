@@ -1,20 +1,18 @@
 /* eslint valid-jsdoc: "off" */
-import { EggAppInfo, EggAppConfig, PowerPartial } from 'egg';
+import { EggAppInfo, EggAppConfig, PowerPartial } from "egg";
 
-
-export type DefaultConfig = PowerPartial<EggAppConfig> 
+export type DefaultConfig = PowerPartial<EggAppConfig>;
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
-export default (appInfo:EggAppInfo) => {
+export default (appInfo: EggAppInfo) => {
   const config = {} as DefaultConfig;
 
-  
   // use for cookie sign key, should change to your own and keep security
-  config.keys = appInfo.name + '_1592274920882_6241';
+  config.keys = appInfo.name + "_1592274920882_6241";
 
   // add your middleware config here
-  config.middleware = ['bizerror'];
+  // config.middleware = ['bizerror'];
 
   // add your user config here
   const userConfig = {
@@ -34,24 +32,24 @@ export default (appInfo:EggAppInfo) => {
   config.cors = {
     //@ts-ignore
     origin: (ctx) => {
-      return ctx.get('Origin');
+      return ctx.get("Origin");
     },
     //@ts-ignore
     credentials: true,
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+    allowMethods: "GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS",
   };
 
   config.onerror = {
-    all(err,ctx) {
+    all(err, ctx) {
       ctx.body = err;
       ctx.status = 500;
     },
-    html(err,ctx) {
+    html(err, ctx) {
       ctx.body = `<h3>${err}</h3>`;
       ctx.status = 500;
     },
-    json(err,ctx){
-      ctx.body = {message:err};
+    json(err, ctx) {
+      ctx.body = { message: err };
       ctx.status = 500;
     },
   };

@@ -2,10 +2,10 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
-import ExportErrorHandler from '../../../app/middleware/error_handler';
+import ExportBizerror from '../../../app/middleware/bizerror';
 
 declare module 'egg' {
   interface IMiddleware {
-    errorHandler: typeof ExportErrorHandler;
+    bizerror: typeof ExportBizerror;
   }
 }

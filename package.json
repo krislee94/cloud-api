@@ -34,7 +34,7 @@
     "node": ">=8.9.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-cloud-api",
+    "start": "set NODE_ENV=production && egg-scripts start --port=7001 --daemon --title=egg-server-cloud-api",
     "stop": "egg-scripts stop --title=egg-server-cloud-api",
     "dev": "set NODE_ENV=production && egg-bin dev -r egg-ts-helper/register",
     "debug": "egg-bin debug",
@@ -43,6 +43,7 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
+    "tsc": "ets && tsc -p tsconfig.json",
     "autod": "autod"
   },
   "ci": {
