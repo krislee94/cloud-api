@@ -59,4 +59,6 @@ export default (app: Application) => {
   router.post("/player/artist/list", controller.player.getArtistList);
   //收藏取消 收藏歌手
   router.post("/artist/sub", controller.player.artistSub);
+  //歌手热门50首歌曲
+  router.post("/artist/top/song", controller.player.artistTopSong);
 };
