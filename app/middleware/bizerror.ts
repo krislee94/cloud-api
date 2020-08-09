@@ -1,7 +1,7 @@
 import { Context } from "egg";
 
 module.exports = () => {
-  return async function errorHandler(ctx: Context, next) {
+  return async function bizerror(ctx: Context, next) {
     try {
       await next();
     } catch (err) {

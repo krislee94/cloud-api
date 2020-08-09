@@ -2,7 +2,6 @@
   "name": "cloud-api",
   "version": "1.0.0",
   "description": "网易云音乐api",
-  "private": true,
   "egg": {
     "typescript": true
   },
@@ -11,7 +10,7 @@
     "egg": "^2.15.1",
     "egg-alinode": "^2.0.1",
     "egg-onerror": "^2.1.0",
-    "egg-scripts": "^2.11.0",
+    "egg-scripts": "^2.13.0",
     "egg-validate": "^2.0.2",
     "is-type-of": "^1.2.1",
     "number-precision": "^1.5.0"
@@ -35,15 +34,16 @@
     "node": ">=8.9.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-cloud-api",
+    "start": "set NODE_ENV=production && egg-scripts start --port=7001 --daemon --title=egg-server-cloud-api",
     "stop": "egg-scripts stop --title=egg-server-cloud-api",
-    "dev": "egg-bin dev -r egg-ts-helper/register",
+    "dev": "set NODE_ENV=production && egg-bin dev -r egg-ts-helper/register",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
+    "tsc": "ets && tsc -p tsconfig.json",
     "autod": "autod"
   },
   "ci": {
