@@ -7,4 +7,8 @@ declare module "cloud" {
     type?: string; //1 男歌手 2 女歌手 3 乐队
     area?: string | number; // -1 是全部，7 是华语，96是欧美，8 日本 16韩国 0其他
   }
+
+  interface IArtistIdRequestParam {
+    artistId: string;
+  }
 }

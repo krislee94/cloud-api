@@ -36,7 +36,7 @@
   "scripts": {
     "start": "set NODE_ENV=production && egg-scripts start --port=7001 --daemon --title=egg-server-cloud-api",
     "stop": "egg-scripts stop --title=egg-server-cloud-api",
-    "dev": "set NODE_ENV=production && egg-bin dev -r egg-ts-helper/register",
+    "dev": "egg-bin dev -r egg-ts-helper/register",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",

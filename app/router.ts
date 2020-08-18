@@ -62,4 +62,6 @@ export default (app: Application) => {
 
   //获取banner
   router.post("/banner", controller.home.getBannerList);
+  //歌手热门50首歌曲
+  router.post("/artist/top/song", controller.player.artistTopSong);
 };

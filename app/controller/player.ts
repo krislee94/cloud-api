@@ -49,4 +49,16 @@ export default class Player extends Controller {
 
     this.ctx.response.success(result);
   }
+
+  public async artistTopSong() {
+    this.ctx.validate({
+      artistId: { type: "string", required: true },
+    });
+
+    const result = this.ctx.service.player.artistTopSong({
+      ...this.ctx.request.body,
+    });
+
+    this.ctx.response.success(result);
+  }
 }
