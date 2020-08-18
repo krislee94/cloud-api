@@ -59,4 +59,7 @@ export default (app: Application) => {
   router.post("/player/artist/list", controller.player.getArtistList);
   //收藏取消 收藏歌手
   router.post("/artist/sub", controller.player.artistSub);
+
+  //获取banner
+  router.post("/banner", controller.home.getBannerList);
 };
