@@ -1,6 +1,6 @@
 # cloud-api
 
-网易云音乐api
+网易云音乐 api
 
 ## QuickStart
 
@@ -29,19 +29,17 @@ $ npm stop
 - Use `npm test` to run unit test.
 - Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
 
-
 [egg]: https://eggjs.org
 
-
-
-
-### 启动YApi
+### 启动 YApi
 
 安装工具
-* npm i sm2tsservice -D
 
-配置3.2.0及以上版本
-* touch json2service.json
+- npm i sm2tsservice -D
+
+配置 3.2.0 及以上版本
+
+- touch json2service.json
 
 ```
  {
@@ -52,8 +50,9 @@ $ npm stop
   }
 ```
 
-配置3.2.0及一下版本
-* touch json2service.json
+配置 3.2.0 及一下版本
+
+- touch json2service.json
 
 ```
  {
@@ -63,7 +62,17 @@ $ npm stop
   }
 ```
 
-生成services代码
+生成 services 代码
 
 (./node_modules/.bin/)sm2tsservice --clear
- 
+
+### 项目上线
+
+-> ssh root@118.126.103.77
+
+- 部署环境前
+- git pull
+- yarn run stop 停止服务
+- yarn dev 删除 js 文件
+- yarn run tsc 编译文件，生成 js 文件，部署在腾讯云的项目是以 JS 运行的
+- yarn run start 启动服务
