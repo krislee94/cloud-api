@@ -9,4 +9,10 @@ export default class personalizedController extends Controller {
 
     this.ctx.response.success(result);
   }
+
+  public async getPersonalizedMVList() {
+    const result = await this.ctx.service.personalized.getPersonalizedMVList();
+
+    this.ctx.response.success(result);
+  }
 }

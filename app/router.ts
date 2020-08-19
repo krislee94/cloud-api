@@ -7,10 +7,10 @@ export default (app: Application) => {
   const { controller, router } = app;
   //初始化
   router.get("/", controller.home.index);
-  //------------------------------公共部分---------------------------------
-  //获取banner
+  //-------------------------- 公共部分 ---------------------------------
+  //获取banner(首页banner图)
   router.post("/banner", controller.home.getBannerList);
-  //--------------------------------- 登录接口 -------------------------------------
+  //--------------------------- 登录接口 -------------------------------------
   //登录login的接口
   router.post("/login/user", controller.login.loginIn);
   //获取登录状态 !!! 这个接口有问题一直返回301 （禁用）
@@ -18,13 +18,13 @@ export default (app: Application) => {
   //刷新登录接口
   router.post("/login/refresh", controller.login.refreshStatus);
 
-  //--------------------------------- 验证码 ----------------------------
+  //---------------------------- 验证码 ----------------------------
   // 发送验证码
   router.post("/send/code", controller.check.sendCode);
   //校验验证码
   router.post("/check/code", controller.check.checkCode);
 
-  //--------------------------  用户 ----------------------------
+  //-----------------------------  用户 ----------------------------
   //用户详情
   router.post("/user/detail", controller.user.queryDetail);
   //获取用户歌单
@@ -66,7 +66,9 @@ export default (app: Application) => {
   //歌手热门50首歌曲
   router.post("/artist/top/song", controller.player.artistTopSong);
 
-  //------------------------- 歌单 ------------------------------
+  //--------------------------- 歌单 ------------------------------
   //获取推荐歌单
   router.post("/personalized", controller.personalized.getPersonalizeList);
+  //推荐mv
+  router.get("/personalized/mv", controller.personalized.getPersonalizedMVList);
 };
