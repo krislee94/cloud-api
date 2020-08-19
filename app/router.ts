@@ -7,6 +7,9 @@ export default (app: Application) => {
   const { controller, router } = app;
   //初始化
   router.get("/", controller.home.index);
+  //------------------------------公共部分---------------------------------
+  //获取banner
+  router.post("/banner", controller.home.getBannerList);
   //--------------------------------- 登录接口 -------------------------------------
   //登录login的接口
   router.post("/login/user", controller.login.loginIn);
@@ -60,8 +63,10 @@ export default (app: Application) => {
   //收藏取消 收藏歌手
   router.post("/artist/sub", controller.player.artistSub);
 
-  //获取banner
-  router.post("/banner", controller.home.getBannerList);
   //歌手热门50首歌曲
   router.post("/artist/top/song", controller.player.artistTopSong);
+
+  //------------------------- 歌单 ------------------------------
+  //获取推荐歌单
+  router.post("/personalized", controller.personalized.getPersonalizeList);
 };

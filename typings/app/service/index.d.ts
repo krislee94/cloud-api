@@ -10,6 +10,7 @@ import ExportCheck from '../../../app/service/check';
 import ExportHome from '../../../app/service/home';
 import ExportHot from '../../../app/service/hot';
 import ExportLogin from '../../../app/service/login';
+import ExportPersonalized from '../../../app/service/personalized';
 import ExportPlayer from '../../../app/service/player';
 import ExportSong from '../../../app/service/song';
 import ExportUser from '../../../app/service/user';
@@ -20,6 +21,7 @@ declare module 'egg' {
     home: AutoInstanceType<typeof ExportHome>;
     hot: AutoInstanceType<typeof ExportHot>;
     login: AutoInstanceType<typeof ExportLogin>;
+    personalized: AutoInstanceType<typeof ExportPersonalized>;
     player: AutoInstanceType<typeof ExportPlayer>;
     song: AutoInstanceType<typeof ExportSong>;
     user: AutoInstanceType<typeof ExportUser>;
