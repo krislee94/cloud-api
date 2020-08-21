@@ -3,12 +3,14 @@ import {
   IArtistListParam,
   IArtistIdRequestParam,
   IAritstSongSublistParam,
+  IArtistSublistRequestParam,
 } from "cloud";
 import {
   artist_list,
   artist_sub,
   artist_top_song,
   artist_songs,
+  artist_sublist,
 } from "NeteaseCloudMusicApi";
 
 export default class Player extends Service {
@@ -57,7 +59,7 @@ export default class Player extends Service {
   //歌手全部歌曲
   public async getArtistSubList(param: IAritstSongSublistParam) {
     try {
-      const { order = "hot", limit = 50, offset = 1 } = param;
+      const { order = "hot", limit = 50, offset = 0 } = param;
       //请求歌手歌曲
       const result = await artist_songs({
         id: param.id,
@@ -69,6 +71,21 @@ export default class Player extends Service {
       return result.body;
     } catch (error) {
       let msg = error.body.message || "查询歌手全部歌曲失败";
+      this.ctx.throwBizError(msg);
+    }
+  }
+
+  //获取收藏歌手列表
+  public async getArtistSubSong(param: IArtistSublistRequestParam) {
+    const { limit = 25, offset = 0 } = param;
+    try {
+      const result = await artist_sublist({
+        limit,
+        offset,
+      });
+      return result.body;
+    } catch (error) {
+      let msg = error.body.message || "查询收藏歌手列表失败";
       this.ctx.throwBizError(msg);
     }
   }

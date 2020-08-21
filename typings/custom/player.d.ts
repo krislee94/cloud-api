@@ -18,4 +18,9 @@ declare module "cloud" {
     limit?: number;
     offset?: number;
   }
+
+  interface IArtistSublistRequestParam {
+    limit?: number;
+    offset?: number;
+  }
 }

@@ -73,4 +73,12 @@ export default class Player extends Controller {
     });
     this.ctx.response.success(result);
   }
+
+  //收藏的歌手列表
+  public async getArtistSubSong() {
+    const result = this.ctx.service.player.getArtistSubSong({
+      ...this.ctx.request.body,
+    });
+    this.ctx.response.success(result);
+  }
 }

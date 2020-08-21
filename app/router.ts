@@ -67,6 +67,8 @@ export default (app: Application) => {
   router.post("/artist/top/song", controller.player.artistTopSong);
   //获取歌手全部歌曲
   router.post("/artist/songs", controller.player.getArtistSubList);
+  //收藏歌手列表
+  router.post("/artist/sublist", controller.player.getArtistSubSong);
 
   //--------------------------- 歌单 ------------------------------
   //获取推荐歌单
