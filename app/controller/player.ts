@@ -61,4 +61,16 @@ export default class Player extends Controller {
 
     this.ctx.response.success(result);
   }
+
+  //获取歌手全部歌曲
+  public async getArtistSubList() {
+    this.ctx.validate({
+      id: { type: "string", required: true },
+      order: { type: "string", required: true },
+    });
+    const result = this.ctx.service.player.getArtistSubList({
+      ...this.ctx.request.body,
+    });
+    this.ctx.response.success(result);
+  }
 }

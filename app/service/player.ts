@@ -1,6 +1,15 @@
 import { Service } from "egg";
-import { IArtistListParam, IArtistIdRequestParam } from "cloud";
-import { artist_list, artist_sub, artist_top_song } from "NeteaseCloudMusicApi";
+import {
+  IArtistListParam,
+  IArtistIdRequestParam,
+  IAritstSongSublistParam,
+} from "cloud";
+import {
+  artist_list,
+  artist_sub,
+  artist_top_song,
+  artist_songs,
+} from "NeteaseCloudMusicApi";
 
 export default class Player extends Service {
   /**
@@ -41,6 +50,25 @@ export default class Player extends Service {
       return result.body;
     } catch (error) {
       let msg = error.body.message || "查询歌手热门歌曲失败";
+      this.ctx.throwBizError(msg);
+    }
+  }
+
+  //歌手全部歌曲
+  public async getArtistSubList(param: IAritstSongSublistParam) {
+    try {
+      const { order = "hot", limit = 50, offset = 1 } = param;
+      //请求歌手歌曲
+      const result = await artist_songs({
+        id: param.id,
+        order,
+        limit,
+        offset,
+      });
+
+      return result.body;
+    } catch (error) {
+      let msg = error.body.message || "查询歌手全部歌曲失败";
       this.ctx.throwBizError(msg);
     }
   }

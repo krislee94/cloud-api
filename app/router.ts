@@ -65,6 +65,8 @@ export default (app: Application) => {
 
   //歌手热门50首歌曲
   router.post("/artist/top/song", controller.player.artistTopSong);
+  //获取歌手全部歌曲
+  router.post("/artist/songs", controller.player.getArtistSubList);
 
   //--------------------------- 歌单 ------------------------------
   //获取推荐歌单

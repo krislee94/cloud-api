@@ -11,4 +11,11 @@ declare module "cloud" {
   interface IArtistIdRequestParam {
     artistId: string;
   }
+
+  interface IAritstSongSublistParam {
+    id: string;
+    order?: string;
+    limit?: number;
+    offset?: number;
+  }
 }
