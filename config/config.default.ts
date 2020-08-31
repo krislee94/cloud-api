@@ -27,6 +27,7 @@ export default (appInfo: EggAppInfo) => {
     xframe: {
       enable: false,
     },
+    domainWhiteList: ["http://localhost:3000"],
   };
 
   config.cors = {
