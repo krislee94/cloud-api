@@ -1,12 +1,20 @@
 /* eslint valid-jsdoc: "off" */
 import { EggAppInfo, EggAppConfig, PowerPartial } from "egg";
+import DB from "./DB";
+
+interface BizConfig {
+  hotGoods: {
+    adminId: string;
+  };
+}
 
 export type DefaultConfig = PowerPartial<EggAppConfig>;
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
 export default (appInfo: EggAppInfo) => {
-  const config = {} as DefaultConfig;
+  // const config = {} as DefaultConfig;
+  const config = {} as DefaultConfig & BizConfig;
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + "_1592274920882_6241";
@@ -54,6 +62,9 @@ export default (appInfo: EggAppInfo) => {
       ctx.status = 500;
     },
   };
+
+  // @ts-ignore
+  config.sequelize = DB.personDB;
 
   return {
     ...config,

@@ -14,4 +14,9 @@ declare module "cloud" {
     uid: string;
     type?: number;
   }
+
+  interface IUserRegisterParam {
+    mobile: string;
+    password: string;
+  }
 }

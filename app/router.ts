@@ -75,4 +75,8 @@ export default (app: Application) => {
   router.post("/personalized", controller.personalized.getPersonalizeList);
   //推荐mv
   router.get("/personalized/mv", controller.personalized.getPersonalizedMVList);
+
+  //-------------------------- elm ---------------------------------
+  //注册
+  router.post("/elm/user/register", controller.user.registerUser);
 };

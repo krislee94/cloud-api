@@ -11,9 +11,14 @@
     "egg-alinode": "^2.0.1",
     "egg-onerror": "^2.1.0",
     "egg-scripts": "^2.13.0",
+    "egg-sequelize": "^5.2.0",
     "egg-validate": "^2.0.2",
     "is-type-of": "^1.2.1",
-    "number-precision": "^1.5.0"
+    "mariadb": "^2.5.3",
+    "moment": "^2.29.1",
+    "mysql2": "^2.0.1",
+    "number-precision": "^1.5.0",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.155",
@@ -37,14 +42,17 @@
     "start": "set NODE_ENV=production && egg-scripts start --port=7001 --daemon --title=egg-server-cloud-api",
     "stop": "egg-scripts stop --title=egg-server-cloud-api",
     "dev": "egg-bin dev -r egg-ts-helper/register",
-    "debug": "egg-bin debug",
+    "debug": "egg-bin debug -r egg-ts-helper/register",
     "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
+    "test-local": "egg-bin test -r egg-ts-helper/register",
+    "cov": "egg-bin cov -r egg-ts-helper/register",   
     "lint": "eslint .",
-    "ci": "npm run lint && npm run cov",
+    "ci": "npm run lint && npm run cov && npm run tsc",
     "tsc": "ets && tsc -p tsconfig.json",
-    "autod": "autod"
+    "autod": "autod",
+    "prepublish": "npm run tsc",
+    "clean": "ets clean",
+    "update-db": "./node_modules/.bin/sequelize db:migrate"
   },
   "ci": {
     "version": "10"
@@ -53,6 +61,16 @@
     "type": "git",
     "url": ""
   },
+  "files": [
+    "app",
+    "config",
+    "lib",
+    "package.json",
+    "app.js",
+    "agent.js",
+    "database",
+    ".sequelizerc"
+  ],
   "author": "krislee",
   "license": "MIT"
 }

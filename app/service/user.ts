@@ -11,8 +11,9 @@ import {
   event_forward,
   user_record,
 } from "NeteaseCloudMusicApi";
-import { IUserRequestParam, ILimitPage } from "cloud";
-
+import { IUserRequestParam, ILimitPage, IUserRegisterParam } from "cloud";
+import moment from "moment";
+import { isEmpty } from "lodash";
 export default class User extends Service {
   public async queryDetail(param: IUserRequestParam) {
     try {
@@ -192,6 +193,42 @@ export default class User extends Service {
       this.ctx.logger.info(`查询失败${error}`);
       let msg = error.body.msg || "查询用户播放记录失败";
       this.ctx.throwBizError(msg);
+    }
+  }
+
+  /**
+   * 注册用户
+   */
+  public async registerUser(param: IUserRegisterParam) {
+    const { mobile, password } = param;
+    try {
+      this.app.model.CloudUser.findOne;
+      //查询数据库
+
+      const sqlIntstance = await this.app.model.CloudUser.findOne({
+        where: {
+          userMobile: mobile,
+        },
+      });
+      if (sqlIntstance && !isEmpty(sqlIntstance)) {
+        this.ctx.throwBizError("该用户已注册过,请直接登录");
+      }
+      //创建账户
+      const ret: any = await this.ctx.app.model.CloudUser.create({
+        userName: `${mobile}`,
+        userTicketId: null,
+        userPassword: `${password}`,
+        userUnionId: null,
+        userMobile: `${mobile}`,
+        isVIP: 0,
+        userWeChat: null,
+        createTime: moment().utcOffset(8),
+        updateTime: moment().utcOffset(8),
+      });
+
+      return ret ? 1 : 0;
+    } catch (error) {
+      this.ctx.throwBizError(error);
     }
   }
 }

@@ -150,4 +150,24 @@ export default class User extends Controller {
 
     this.ctx.response.success(result);
   }
+
+  /** -------------------------------- elm --------------------------- */
+
+  /**
+   * 注册
+   */
+  public async registerUser() {
+    this.ctx.validate({
+      mobile: { type: "string", required: true },
+      password: { type: "string", required: true },
+    });
+    const { mobile, password } = this.ctx.request.body;
+
+    const result = await this.ctx.service.user.registerUser({
+      mobile,
+      password,
+    });
+
+    this.ctx.response.success(result);
+  }
 }
