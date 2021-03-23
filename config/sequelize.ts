@@ -1,4 +1,4 @@
-import DB from "./db";
+import DB from "./DB";
 const ENV_ID = process.env.EGG_SERVER_ENV || "personDB"; //线上EGG_SERVER_ENV是空, 本调试也是空;
 const NODE_ENV = process.env.NODE_ENV || "development"; // 方便本地调试;
 const LOCAL_MYSQL = DB.personDB; // 方便本测试升级脚本;

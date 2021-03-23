@@ -79,4 +79,6 @@ export default (app: Application) => {
   //-------------------------- elm ---------------------------------
   //注册
   router.post("/elm/user/register", controller.user.registerUser);
+  //登录
+  router.post("/elm/user/login", controller.user.loginUser);
 };

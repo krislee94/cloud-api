@@ -152,6 +152,7 @@ export default class User extends Controller {
   }
 
   /** -------------------------------- elm --------------------------- */
+  //暂时先不考虑鉴权。redis服务器还没配置起来.
 
   /**
    * 注册
@@ -167,6 +168,21 @@ export default class User extends Controller {
       mobile,
       password,
     });
+
+    this.ctx.response.success(result);
+  }
+
+  /**
+   * 登录接口
+   */
+  public async loginUser() {
+    this.ctx.validate({
+      mobile: { type: "string", required: true },
+      password: { type: "string", required: true },
+    });
+    const { mobile, password } = this.ctx.request.body;
+
+    const result = await this.ctx.service.user.loginUser({ mobile, password });
 
     this.ctx.response.success(result);
   }

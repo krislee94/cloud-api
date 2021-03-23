@@ -231,4 +231,27 @@ export default class User extends Service {
       this.ctx.throwBizError(error);
     }
   }
+
+  /**
+   * 用户登录接口
+   */
+  public async loginUser(param: IUserRegisterParam) {
+    const { mobile, password } = param;
+    try {
+      const sqlIntstance = await this.app.model.CloudUser.findOne({
+        where: {
+          userMobile: `${mobile}`,
+          userPassword: `${password}`,
+        },
+      });
+
+      if (!sqlIntstance) {
+        this.ctx.throwBizError("用户名或密码错误");
+      }
+
+      return sqlIntstance;
+    } catch (error) {
+      this.ctx.throwBizError(error);
+    }
+  }
 }
