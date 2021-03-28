@@ -202,7 +202,7 @@ export default class User extends Service {
   public async registerUser(param: IUserRegisterParam) {
     const { mobile, password } = param;
     try {
-      this.app.model.CloudUser.findOne;
+      // this.app.model.CloudUser.findOne;
       //查询数据库
 
       const sqlIntstance = await this.app.model.CloudUser.findOne({
