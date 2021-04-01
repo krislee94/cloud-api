@@ -76,3 +76,5 @@ $ npm stop
 - yarn dev 删除 js 文件
 - yarn run tsc 编译文件，生成 js 文件，部署在腾讯云的项目是以 JS 运行的
 - yarn run start 启动服务
+
+// "prepublish": "npm run tsc && node swagger.js",

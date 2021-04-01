@@ -1,18 +1,17 @@
 'use strict';
-// http://docs.sequelizejs.com/manual/migrations.html
-// 测试用;
+/**
+ * 会员模块
+ */
 module.exports = {
   up: (queryInterface, Sequelize) => {
     const { INTEGER, DATE, STRING } = Sequelize;
     return queryInterface.sequelize.transaction(t => {
       return Promise.all([
         queryInterface.createTable(
-          'test',
+          'product_test',
           {
-            id: { type: INTEGER, primaryKey: true, autoIncrement: {
-              defaultValue:1000,
-            } ,primaryKey:true,unique:true},
-            num: INTEGER,
+            id: { type: INTEGER, primaryKey: true, autoIncrement: true, }, //从1000开始
+            user_wechat:STRING(30),
             created_at: DATE,
             updated_at: DATE,
           },
