@@ -39,12 +39,14 @@ export default (appInfo: EggAppInfo) => {
   };
 
   config.cors = {
-    //@ts-ignore
-    origin: (ctx) => {
-      return ctx.get("Origin");
-    },
+    // //@ts-ignore
+    // origin: (ctx) => {
+    //   return ctx.get("Origin");
+    // },
+    origin: "http://localhost:3001", //匹配规则  域名+端口  *则为全匹配
     //@ts-ignore
     credentials: true,
+
     allowMethods: "GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS",
   };
 
